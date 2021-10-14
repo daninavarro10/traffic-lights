@@ -9,7 +9,7 @@ After 3 seconds, the vehicles light turn red and the pedestrians' turn green for
 Finally, the green light for pedestrians blink during 5 seconds and the loop starts again.
 
 */
-
+int buzzerP = 4;
 int greenLedP = 6;   // green led for people
 int redLedP = 5;      // red led for people
 int greenLedV = 11;    // green led for vehicles
@@ -17,6 +17,7 @@ int yellowLedV = 10;  // yellow led for vehicles
 int redLedV = 9;     // red led for vehicles
 
 void greenLightV(){
+  
   digitalWrite(greenLedV, HIGH);   // turn the green LED on (HIGH is the voltage level)
   digitalWrite(yellowLedV, LOW);    // turn the yellow LED off by making the voltage LOW
   digitalWrite(redLedV, LOW);    // turn the red LED off by making the voltage LOW
@@ -29,8 +30,10 @@ void blinkGreenP() {
   int cicles = 0;
   while (cicles < 5) {
     digitalWrite(greenLedP, HIGH);
+    tone(buzzerP, 1000); // Send 1KHz sound signal...
     delay(200);
     digitalWrite(greenLedP, LOW);
+    noTone(buzzerP);     // Stop sound...
     delay(200);
     cicles ++;
   }
@@ -52,9 +55,13 @@ void redLightV(){
 
   digitalWrite(greenLedP, HIGH);   // turn the green LED on (HIGH is the voltage level)
   digitalWrite(redLedP, LOW);    // turn the red LED off by making the voltage LOW
+
 }
 
 void setup() {
+
+  pinMode(buzzerP, OUTPUT);
+  
   pinMode(greenLedP, OUTPUT);
   pinMode(redLedP, OUTPUT);
   
