@@ -21,3 +21,5 @@ Version 4: IR receiver
 Version 5: ultrasonic sensor
 
 Version 6: servo motor (barrier)
+
+lcd shows the time left to the pedestrian
